@@ -1,0 +1,139 @@
+:root {
+    --primary: #2E7D32;
+    --bg: #f8f8f8;
+    --card-bg: #fff;
+    --text: #333;
+    --border: #e0e0e0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg);
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+}
+
+.container {
+    max-width: 1500px;
+    margin: 20px auto;
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.header h2 {
+    margin: 0;
+    color: rgb(77, 50, 249);
+}
+
+.participants {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+    margin-bottom: 24px;
+    justify-content: center;
+    min-height: 200px;
+    height: 70%;
+}
+
+.participant {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 1050px; /* 원하는 최대 크기 */
+    aspect-ratio: 16 / 9; /* 1:1 정사각형 비율, 16:9로 바꾸려면 16 / 9 */
+    background: black;
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 8px;
+    font-size: 1.1rem;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.name {
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.status.voice {
+    color: #4714ed;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--bg);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s;
+}
+
+.control-btn.end {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.control-btn.voice {
+    background-color: var(--primary);
+    color: white;
+}
+
+.control-btn.video {
+    background-color: #4714ed;
+    color: white;
+}
+
+.control-btn:hover {
+    opacity: 0.9;
+}
+
+.control-btn i {
+    font-size: 24px;
+}
+
+.footer {
+    margin-top: 16px;
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+}
+
+@media (max-width: 500px) {
+    .participants {
+        display: block;
+    }
+
+    .participant {
+        margin-bottom: 15px;
+    }
+}

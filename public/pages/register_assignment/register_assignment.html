@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>과제 등록</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link rel="stylesheet" type="text/css" href="/public/pages/register_assignment/register_assignment.css">
+  <script src="/public/pages/register_assignment/register_assignment.js" defer></script>
+</head>
+
+<body>
+
+
+  <div class="assignment-register-section">
+    <div class="section-title">
+      <i class="fas fa-plus-circle"></i> 과제 등록
+    </div>
+    <form class="assignment-register-form">
+      <div class="form-row">
+        <label for="assignment-name">과제명</label>
+        <input type="text" id="assignment-name" required>
+      </div>
+      <div class="form-row img">
+        <label for="assignment-img">이미지</label>
+        <input type="file" id="assignment-img" accept="image/*">
+        <div class="img-preview-wrap">
+          <img id="img-preview" src="" alt="미리보기" style="display:none;">
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="minimum-achieve">달성 최소 조건</label>
+        <input type="text" id="minimum-achieve" required>
+      </div>
+      <div class="form-row">
+        <label for="deadline">달성 기한</label>
+        <input type="date" id="deadline" required>
+      </div>
+      <button type="submit" id="register-assignment" class="register-btn">등록</button>
+      <button type="button" id="cancel-register" class="register-cancel-btn">취소</button>
+    </form>
+  </div>
+
+</body>
+
+</html>

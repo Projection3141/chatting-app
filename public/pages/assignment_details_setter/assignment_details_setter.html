@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>과제 상세 - 설정자</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assignment_details_setter.css">
+  <script src="assignment_details_setter.js" defer></script>
+</head>
+
+<body>
+  <div class="assignment-detail-section">
+
+    <div class="window-function">
+      <i id="more-close-button" class="fas fa-arrow-left"></i>
+    </div>
+
+    <!-- 과제명, 이미지, 설명 -->
+    <div class="assignment-header">
+      <img src="../../src/assets/assignment-img1.png" alt="과제 이미지" class="assignment-img">
+      <div class="assignment-header-info">
+        <div class="assignment-title">글렌 파클라스 25 cs</div>
+        <div class="assignment-desc">싱글몰트 위스키의 대표 주자, 깊은 풍미와 긴 여운이 특징입니다.</div>
+      </div>
+    </div>
+
+    <!-- 최소 조건, 만료 기한 -->
+    <div class="assignment-info-row">
+      <div class="assignment-info-item">
+        <span class="info-label">최소 조건</span>
+        <span class="info-value">230,000</span>
+      </div>
+      <div class="assignment-info-item">
+        <span class="info-label">만료 기한</span>
+        <span class="info-value">2025년 8월 11일 오후 12:00</span>
+      </div>
+    </div>
+
+    <!-- 최고 제출자 강조 -->
+    <div class="best-submit-title">최고 제출자</div>
+    <div class="submit-item highest">
+      <img src="../../src/assets/friend-profile6.png" alt="프로필" class="submit-profile-img">
+      <div class="submit-name">고영현</div>
+      <div class="submit-rate">달성률:</div>
+      <div class="submit-content">260,000</div>
+    </div>
+
+    <!-- 제출자 목록 -->
+    <div class="submit-list-title">제출자 내역</div>
+    <div class="submit-list-row">
+      <div class="submit-item">
+        <img src="../../src/assets/friend-profile.png" alt="프로필" class="submit-profile-img">
+        <div class="submit-name">김형준</div>
+        <div class="submit-rate">달성률:</div>
+        <div class="submit-content">240,000</div>
+      </div>
+      <div class="submit-item">
+        <img src="../../src/assets/friend-profile2.png" alt="프로필" class="submit-profile-img">
+        <div class="submit-name">권혁윤</div>
+        <div class="submit-rate">달성률:</div>
+        <div class="submit-content">250,000</div>
+      </div>
+      <div class="submit-item">
+        <img src="../../src/assets/friend-profile3.png" alt="프로필" class="submit-profile-img">
+        <div class="submit-name">이준환</div>
+        <div class="submit-rate">달성률:</div>
+        <div class="submit-content">256,000</div>
+      </div>
+    </div>
+
+    <!-- 하단 버튼 -->
+    <div class="bottom-area">
+      <div id="progress" class="condition gray" style="display: none;">진행중</div>
+      <div id="expired" class="condition" style="display: none;">만료됨</div>
+      <button id="finish" class="condition" style="display: none;">종료</button>
+      <div id="finished" class="condition red" style="display: none;">종료됨</div>
+    </div>
+  </div>
+
+  <!-- 최고 제출자 갱신 & 연장 여부 질문 모달 -->
+  <div class="modal-overlay" id="extend-confirm-modal" style="display: flex;">
+    <div class="modal-box">
+      <i class="fas fa-clock modal-icon"></i>
+      <div class="modal-title">최고 제출자가 갱신되었습니다!</div>
+      <div class="modal-desc">
+        <span>마감 시간을 <b>10분 연장</b>하시겠습니까?</span><br>
+        <span class="modal-tip">※ 연장 시, 모든 참가자에게 안내됩니다.</span>
+      </div>
+      <div class="modal-btn-row">
+        <button class="modal-btn main" id="extend-yes-btn">연장하기</button>
+        <button class="modal-btn" id="extend-no-btn">유지하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 연장 처리 완료 안내 모달 -->
+  <div class="modal-overlay" id="extend-done-modal" style="display: none;">
+    <div class="modal-box">
+      <i class="fas fa-check-circle modal-icon done"></i>
+      <div class="modal-title">마감 시간이 연장되었습니다</div>
+      <div class="modal-desc">
+        <span>모든 참가자에게 연장 안내가 전송되었습니다.</span>
+      </div>
+      <div class="modal-btn-row single">
+        <button class="modal-btn main" id="extend-done-close-btn">확인</button>
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</body>
+
+</html>

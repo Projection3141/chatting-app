@@ -1,0 +1,154 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    padding: 0 !important;
+}
+
+.row {
+    margin: 0 !important;
+}
+
+.sidebar {
+    background: #f7f7f7;
+    height: 100vh;
+    padding: 0;
+    border-right: 1px solid #e0e0e0;
+}
+
+.sidebar .nav-icon {
+    font-size: 22px;
+    color: #888;
+    margin: 30px 0;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sidebar .nav-icon.active {
+    color: #222;
+}
+
+.chats-header {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 20px 20px 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chats-header .title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #4714ed;
+}
+
+.chats-header .header-icons i {
+    font-size: 20px;
+    color: #888;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: color 0.18s;
+}
+
+.chat-list-container {
+    border-right: 1px solid #888;
+}
+
+.chat-list-section {
+    background: #fff;
+    height: calc(100vh - 60px - 60px);
+    overflow-y: auto;
+    border-bottom: 1px solid #eee;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    padding: 13px 20px 13px 20px;
+    border-bottom: 1px solid #f5f5f5;
+    cursor: pointer;
+}
+
+.chat-item:last-child {
+    border-bottom: none;
+}
+
+.chat-profile {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 13px;
+}
+
+.chat-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.chat-info .chat-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+    display: flex;
+    align-items: center;
+}
+
+.chat-info .chat-title .me-badge {
+    font-size: 12px;
+    color: #888;
+    margin-left: 4px;
+}
+
+.chat-info .chat-preview {
+    font-size: 13px;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-date {
+    font-size: 12px;
+    color: #bbb;
+    margin-left: 10px;
+    min-width: 65px;
+    text-align: right;
+}
+
+.ad-section {
+    background: #fff;
+    padding: 10px 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.ad-section img {
+    max-width: 100%;
+    height: 40px;
+}
+
+/* 추가: 인라인 스타일 대체 (col-11, col-md-5 등은 Bootstrap 클래스이므로 별도 수정 불필요) */
+/* 채팅방 목록 */
+.d-none.d-md-flex.col-md-6.col-xl-7 {
+    background: rgba(255, 255, 255, 0.1);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.d-none.d-md-flex.col-md-6.col-xl-7 h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.d-none.d-md-flex.col-md-6.col-xl-7 p {
+    font-size: 16px;
+    color: #666;
+}

@@ -1,0 +1,269 @@
+body {
+  background: #f8f9fb;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  width: 340px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(71, 20, 237, 0.12);
+  padding: 38px 28px 30px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #4714ed;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-title i {
+  font-size: 28px;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-bottom: 18px;
+}
+
+.login-form input {
+  padding: 10px 12px;
+  border: 1.5px solid #d3d4f5;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #fafaff;
+  transition: border 0.18s;
+}
+
+.login-form input:focus {
+  border: 1.5px solid #4714ed;
+  outline: none;
+  background: #f4f5ff;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px 0;
+  background: #4714ed;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(71,20,237,0.08);
+  transition: background 0.18s;
+}
+.login-btn:hover {
+  background: #3a2fd9;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 10px 0;
+  background: #f4f5ff;
+  color: #4714ed;
+  border: 1.5px solid #d3d4f5;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: background 0.18s, border 0.18s;
+}
+.signup-btn:hover {
+  background: #e8eafd;
+  border-color: #4714ed;
+}
+
+/* 로그인 실패 모달 */
+.login-fail-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 32, 68, 0.18);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-fail-modal-inner {
+  width: 320px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(237, 20, 71, 0.18);
+  padding: 30px 26px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  animation: modalFadeIn 0.2s;
+}
+
+.login-fail-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 20px;
+  color: #bbb;
+  cursor: pointer;
+  transition: color 0.18s;
+}
+.login-fail-modal-close:hover {
+  color: #ed1447;
+}
+
+.login-fail-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #ed1447;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.login-fail-title i {
+  font-size: 24px;
+}
+.login-fail-message {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.login-fail-confirm-btn {
+  width: 100%;
+  padding: 12px 0;
+  background: #ed1447;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.login-fail-confirm-btn:hover {
+  background: #b60b33;
+}
+
+/* 회원가입 모달 */
+.signup-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 32, 68, 0.18);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-modal-inner {
+  width: 340px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(71, 20, 237, 0.18);
+  padding: 36px 28px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  animation: modalFadeIn 0.2s;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(30px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+.signup-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 20px;
+  color: #bbb;
+  cursor: pointer;
+  transition: color 0.18s;
+}
+.signup-modal-close:hover {
+  color: #4714ed;
+}
+
+.signup-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4714ed;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.signup-title i {
+  font-size: 22px;
+}
+
+.signup-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.signup-form input {
+  padding: 10px 12px;
+  border: 1.5px solid #d3d4f5;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #fafaff;
+  transition: border 0.18s;
+}
+
+.signup-form input:focus {
+  border: 1.5px solid #4714ed;
+  outline: none;
+  background: #f4f5ff;
+}
+
+.signup-submit-btn {
+  width: 100%;
+  padding: 12px 0;
+  background: #4714ed;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(71,20,237,0.08);
+  transition: background 0.18s;
+}
+.signup-submit-btn:hover {
+  background: #3a2fd9;
+}

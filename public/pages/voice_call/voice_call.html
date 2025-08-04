@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>통화 웹 UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="./voice_call.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>친구와 통화 중</h2>
+        </div>
+        <div class="participants">
+            <div class="participant">
+                <div class="profile" style="background-image: url('/public/src/assets/friend-profile.png')"></div>
+                <div class="name">김형준</div>
+                <div class="status online">온라인</div>
+            </div>
+            <div class="participant">
+                <div class="profile" style="background-image: url('/public/src/assets/user-profile.jpg')"></div>
+                <div class="name">나</div>
+                <div class="status voice">음성 통화 중</div>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="control-btn voice">
+                <i class="fas fa-microphone"></i>
+            </button>
+            <button class="control-btn">
+                <i class="fas fa-volume-up"></i>
+            </button>
+            <button class="control-btn video">
+                <i class="fas fa-video"></i>
+            </button>
+            <button class="control-btn end">
+                <i class="fas fa-phone-slash"></i>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>채팅 목록</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/public/pages/chat_list/chat_list.css">
+    <script src="./chat_list.js" defer></script>
+</head>
+
+<body>
+    <!-- 채팅 리스트 메인 -->
+    <div class="chat-list-container">
+        <!-- 상단 헤더 -->
+        <div class="chats-header">
+            <span class="title">채팅 목록</span>
+            <span class="header-icons">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-user-plus"></i>
+            </span>
+        </div>
+        <!-- 채팅 리스트 -->
+        <div class="chat-list-section">
+            <div class="chat-item">
+                <img src="/public/src/assets/user-profile.jpg" class="chat-profile">
+                <div class="chat-info">
+                    <div class="chat-title">차재원 <span class="me-badge">🛈</span></div>
+                    <div class="chat-preview">Copycoder</div>
+                </div>
+                <div class="chat-date">2025-06-09</div>
+            </div>
+            <div class="chat-item" data-friend="이준환">
+                <img src="/public/src/assets/friend-profile3.png" class="chat-profile">
+                <div class="chat-info">
+                    <div class="chat-title">이준환</div>
+                    <div class="chat-preview">고수임</div>
+                </div>
+                <div class="chat-date">오후 7:07</div>
+            </div>
+            <div class="chat-item" data-friend="김형준">
+                <img src="/public/src/assets/friend-profile.png" class="chat-profile">
+                <div class="chat-info">
+                    <div class="chat-title">김형준</div>
+                    <div class="chat-preview">ㅇㅇ</div>
+                </div>
+                <div class="chat-date">오후 5:27</div>
+            </div>
+            <div class="chat-item">
+                <img src="/public/src/assets/friend-profile4.png" class="chat-profile">
+                <div class="chat-info">
+                    <div class="chat-title">카카오페이</div>
+                    <div class="chat-preview">페이머니 충전 후 결제가 완료되었어요...</div>
+                </div>
+                <div class="chat-date">2025-06-19</div>
+            </div>
+            <div class="chat-item">
+                <img src="/public/src/assets/friend-profile5.png" class="chat-profile">
+                <div class="chat-info">
+                    <div class="chat-title">아빠</div>
+                    <div class="chat-preview">이모티콘을 보냈습니다.</div>
+                </div>
+                <div class="chat-date">2025-06-18</div>
+            </div>
+            <!-- 추가 채팅방... -->
+        </div>
+
+    </div>
+</body>

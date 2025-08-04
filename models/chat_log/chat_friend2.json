@@ -1,0 +1,64 @@
+[
+    { "type": "time", "text": "(일) 오후 13:19" },
+    {
+        "sender": "friend",
+        "profile": "/public/src/assets/friend-profile.png",
+        "name": "이준환",
+        "text": "상대 메시지 시작"
+    },
+    {
+        "sender": "friend",
+        "text": "상대 메시지 중간"
+    },
+    {
+        "sender": "friend",
+        "text": "상대 메시지 끝"
+    },
+    {
+        "sender": "me",
+        "text": "내 메시지 시작"
+    },
+    {
+        "sender": "me",
+        "last": "내 메시지 끝"
+    },
+    {
+        "sender": "friend",
+        "profile": "/public/src/assets/friend-profile.png",
+        "name": "이준환",
+        "text": "감정표현 예시",
+        "reactions": [
+            { "icon": "far fa-smile", "count": 1 },
+            { "icon": "far fa-heart", "count": 2 }
+        ]
+    },
+    {
+        "sender": "friend",
+        "text": "감정표현, 답장 hover 예시",
+        "replyAndExpression": true
+    },
+    {
+        "sender": "me",
+        "reply": {
+            "to": "이준환에게 답장",
+            "toWhat": "감정표현, 답장 hover 예시"
+        },
+        "text": "답장 예시"
+    },
+    { "type": "time", "text": "(월) 오전 11:43" },
+    {
+        "sender": "friend",
+        "profile": "/public/src/assets/friend-profile.png",
+        "name": "이준환",
+        "link": "https://www.youtube.com/watch?v=4rgSzQwe5DQ&list=RD4rgSzQwe5DQ&start_radio=1",
+        "linkCard": {
+            "thumbnail": "/public/src/assets/link_thumbnail.jpg",
+            "title": "비발디: 사계 (Orquesta Reino de Aragón)",
+            "description": "🎵 MP3 앨범 구매: https://bit.ly/3emUdjo 🎧 Spotify에서 오케스트라 팔로우: https://spoti.fi/3t0yxA9 🍎 아이튠즈 및 애플 뮤직: https://apple.co/3hFh9ek 💿 Amazon에..."
+        }
+    },
+    {
+        "sender": "me",
+        "image": "/public/src/assets/user-profile.jpg"
+    }
+]

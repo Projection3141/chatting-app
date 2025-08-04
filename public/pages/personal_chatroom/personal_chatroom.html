@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>채팅방</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/public/pages/personal_chatroom/personal_chatroom.css">
+    <script src="/public/pages/personal_chatroom/personal_chatroom.js" defer></script>
+</head>
+
+<!-- personal_chatroom.html -->
+<div class="chat-main-content">
+
+    <body id="body">
+
+        <!-- 화면 오버레이 -->
+        <div id="modal-dark-overlay"></div>
+        <div id="modal-bright-overlay"></div>
+
+        <!-- 상단 헤더 -->
+        <div class="header">
+
+            <!-- 프로필 및 채팅 기능 -->
+            <div class="profile-with-function">
+                <!-- 프로필: 이미지 / 이름 -->
+                <div class="friend-profile">
+                    <img src="/public/src/assets/friend-profile.png" class="friend-profile-img">
+                    <p class="name">김형준</p>
+                </div>
+                <!-- 채팅 기능: 통화 / 영상통화 / 더보기 -->
+                <div class="chat-function">
+                    <i id="voice-call-button" class="fas fa-phone"></i>
+                    <i id="face-call-button" class="fas fa-video"></i>
+                    <i id="more-button" class="fas fa-bars"></i>
+
+                    <div class="more-functions">
+
+                        <div class="window-function">
+                            <i id="more-close-button" class="fas fa-times"></i>
+                        </div>
+                        <div class="functions">
+                            <div class="more-function drawer">
+                                <i id="more-list-button" class="fa fa-shopping-basket" onclick="togglePanel('chat-list')">
+                                    <p>채팅방 목록</p>
+                                </i>
+                            </div>
+                            <div class="more-function drawer">
+                                <i id="more-list-button" class="fa fa-user" onclick="togglePanel('friend-list')">
+                                    <p>친구 목록</p>
+                                </i>
+                            </div>
+                            <div class="more-function board">
+                                <i id="more-board-button" class="fa fa-clipboard" onclick="togglePanel('drawer')">
+                                    <p>게시판</p>
+                                </i>
+                            </div>
+                            <div class="more-function exit">
+                                <i id="more-exit-button" class="fas fa-sign-out-alt">
+                                    <p>채팅방 나가기</p>
+                                </i>
+                            </div>
+                        </div>
+                        <div class="setting">
+                            <div class="left">
+                                <i id="voice-call-button" class="far fa-bell"></i> <!-- 어두운건 fas -->
+                                <i id="face-call-button" class="far fa-star"></i> <!-- 어두운건 fas -->
+                            </div>
+                            <div class="right">
+                                <i id="more-button" class="fas fa-cog"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 메시지 컨테이너-->
+        <div class="chat-container">
+            <div class="message-container">
+        </div>
+
+        <!-- 통화창 -->
+        <div class="voice-call-start">
+            <div class="box-top">
+                <p class="call-start-question">음성통화를 시작하시겠습니까?</p>
+            </div>
+            <div class="box-bottom">
+                <div class="yes">
+                    <p>확인</p>
+                </div>
+                <div class="divider"></div>
+                <div id="cancel-voicecall-button" class="no">
+                    <p>취소</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="face-call-start">
+            <div class="box-top">
+                <p class="call-start-question">영상통화를 시작하시겠습니까?</p>
+            </div>
+            <div class="box-bottom">
+                <div class="yes">
+                    <p>확인</p>
+                </div>
+                <div class="divider"></div>
+                <div id="cancel-facecall-button" class="no">
+                    <p>취소</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 답장 시 입력창 -->
+        <div class="reply-footer">
+            <div class="reply-info">
+                <p class="reply-to-who">김형준에게 답장</p>
+                <p class="reply-to-what">감정표현 hover 예시</p>
+            </div>
+            <div class="reply-icon">
+                <span id="cancel-reply-button" style="font-size:20px; font-weight:300; cursor:pointer;">&#10005;</span>
+            </div>
+        </div>
+
+        <!-- 이미지 미리보기 (파일 선택 시만 노출) -->
+        <div id="chat-image-preview-wrap" style="display: none;">
+            <div class="my-message image preview" style="display: none;">
+                <img id="chat-image-preview" src="" alt="미리보기" class="chat-image-msg">
+                <span class="preview-cancel" id="preview-cancel-btn" title="취소">&times;</span>
+            </div>
+        </div>
+
+        <!-- 하단 입력창 -->
+        <div class="footer">
+            <i class="far fa-image footer-icon"></i>
+            <i class="far fa-smile footer-icon"></i>
+            <i class="fas fa-ellipsis-h footer-icon"></i>
+            <textarea id="input-message" name="input-message" rows="3" maxlength="300" placeholder="메시지 입력"></textarea>
+        </div>
+
+        <!-- 숨겨진 파일 input -->
+        <input type="file" id="chat-image-input" accept="image/*" style="display: none;" multiple>
+
+    </body>
+</div>
+
+</html>

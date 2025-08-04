@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>과제 상세 - 참가자</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assignment_details_participant.css">
+    <script src="assignment_details_participant.js" defer></script>
+</head>
+
+<body>
+    <div class="assignment-detail-section">
+
+        <div class="window-function">
+            <i id="more-close-button" class="fas fa-arrow-left"></i>
+        </div>
+
+        <!-- 과제명, 이미지, 설명 -->
+        <div class="assignment-header">
+            <img src="../../src/assets/assignment-img1.png" alt="과제 이미지" class="assignment-img">
+            <div class="assignment-header-info">
+                <div class="assignment-title">글렌 파클라스 25 cs</div>
+                <div class="assignment-desc">싱글몰트 위스키의 대표 주자, 깊은 풍미와 긴 여운이 특징입니다.</div>
+            </div>
+        </div>
+
+        <!-- 최소 조건, 만료 기한 -->
+        <div class="assignment-info-row">
+            <div class="assignment-info-item">
+                <span class="info-label">최소 조건</span>
+                <span class="info-value">230,000</span>
+            </div>
+            <div class="assignment-info-item">
+                <span class="info-label">만료 기한</span>
+                <span class="info-value">2025년 8월 11일 오후 12:00</span>
+            </div>
+        </div>
+
+        <!-- 최고 제출자 강조 -->
+        <div class="best-submit-title">최고 제출자</div>
+        <div class="submit-item highest">
+            <img src="../../src/assets/friend-profile6.png" alt="프로필" class="submit-profile-img">
+            <div class="submit-name">고영현</div>
+            <div class="submit-rate">달성률:</div>
+            <div class="submit-content">260,000</div>
+        </div>
+
+        <!-- 제출자 목록 -->
+        <div class="submit-list-title">제출자 내역</div>
+        <div class="submit-list-row">
+            <div class="submit-item">
+                <img src="../../src/assets/friend-profile.png" alt="프로필" class="submit-profile-img">
+                <div class="submit-name">김형준</div>
+                <div class="submit-rate">달성률:</div>
+                <div class="submit-content">240,000</div>
+            </div>
+            <div class="submit-item">
+                <img src="../../src/assets/friend-profile2.png" alt="프로필" class="submit-profile-img">
+                <div class="submit-name">권혁윤</div>
+                <div class="submit-rate">달성률:</div>
+                <div class="submit-content">250,000</div>
+            </div>
+            <div class="submit-item">
+                <img src="../../src/assets/friend-profile3.png" alt="프로필" class="submit-profile-img">
+                <div class="submit-name">이준환</div>
+                <div class="submit-rate">달성률:</div>
+                <div class="submit-content">256,000</div>
+            </div>
+        </div>
+
+        <!-- 내 제출 (제출한 경우만 노출) -->
+        <div class="my-submit-item" style="display: none;">
+            <img src="../../src/assets/user-profile.jpg" alt="내 프로필" class="submit-profile-img">
+            <div class="submit-name">나</div>
+            <div class="submit-rate">달성률:</div>
+            <div class="submit-content">245,000</div>
+        </div>
+
+        <!-- 하단 버튼 -->
+        <div class="bottom-btn-area">
+            <button id="submit-btn" class="main-btn" style="display: none;">제출하기</button>
+            <button id="resubmit-btn" class="main-btn" style="display: none;">제출 수정</button>
+        </div>
+
+        <!-- 제출 모달 -->
+        <div class="submit-modal" style="display: none;">
+            <div class="submit-modal-inner">
+                <i id="cancel-submit" class="fas fa-times submit-modal-close"></i>
+                <p>과제 제출하기</p>
+                <span>과제 달성도</span>
+                <input type="number" id="assignment-achievement" placeholder="예) 245000" required>
+                <button id="submit" class="submit">제출하기</button>
+            </div>
+        </div>
+
+        <!-- 재제출 모달 -->
+        <div class="resubmit-modal" style="display: none;">
+            <div class="submit-modal-inner">
+                <i id="cancel-resubmit" class="fas fa-times submit-modal-close"></i>
+                <p>과제 제출하기</p>
+                <div class="resubmit-current">
+                    <span class="resubmit-label">기존 달성도</span>
+                    <div class="resubmit-old-value">245,000</div>
+                </div>
+                <span class="resubmit-label">신규 달성도</span>
+                <input type="number" id="assignment-new-achievement" placeholder="예) 250000" required>
+                <button id="resubmit" class="submit">제출하기</button>
+            </div>
+        </div>
+
+
+        <!-- 연장 처리 알림 모달 -->
+        <div class="extend-notice-modal" id="extend-notice-modal" style="display: flex;">
+            <div class="extend-notice-modal-inner">
+                <i class="fas fa-clock modal-icon"></i>
+                <div class="modal-title">과제 마감 시간이 연장되었습니다</div>
+                <div class="modal-desc">
+                    <span>최고 제출자 갱신으로 인해<br><b>마감 시간이 10분 연장</b>되었습니다.</span>
+                </div>
+                <button class="modal-btn main" id="extend-notice-close-btn">확인</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- 폰트어썸 CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</body>
+
+</html>

@@ -1,0 +1,211 @@
+<!-- board page -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>채팅 게시판</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/public/pages/board/board.css">
+</head>
+
+<body>
+    <div class="chat-header">
+        <div class="profile-with-function">
+            <div class="friend-profile">
+                <img src="/public/src/assets/friend-profile.png" class="friend-profile-img">
+                <span class="friend-name">김형준</span>
+            </div>
+            <div class="chat-function">
+                <i id="register-assignment" class="fas fa-pen"></i>
+            </div>
+        </div>
+        <div class="chat-menu">
+            <span id="assignment-btn" class="chat-menu-item active">과제</span>
+            <span id="all-btn" class="chat-menu-item">전체</span>
+            <span id="notification-btn" class="chat-menu-item">공지</span>
+            <span id="vote-btn" class="chat-menu-item">투표</span>
+            <span id="file-btn" class="chat-menu-item">파일</span>
+        </div>
+    </div>
+
+    <div class="chat-header-util">
+        <div class="search-sort-wrap">
+            <input type="text" name="search-assignment" class="board-search-input" placeholder="과제, 게시글 검색">
+            <button class="detail-search-btn" id="detail-search-toggle" type="button">
+                <i class="fas fa-filter"></i>
+                <span>상세 검색</span>
+            </button>
+        </div>
+        <!-- 상세 검색 박스 -->
+        <div class="detail-search-box" id="detail-search-box" style="display: none;">
+            <div class="filter-group">
+                <div class="filter-label">기간</div>
+                <div class="filter-btn-group">
+                    <button type="button" class="filter-btn">진행중</button>
+                    <button type="button" class="filter-btn">종료</button>
+                    <button type="button" class="filter-btn active">전체</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <div class="filter-label">참여 여부</div>
+                <div class="filter-btn-group">
+                    <button type="button" class="filter-btn">참여</button>
+                    <button type="button" class="filter-btn">미참여</button>
+                    <button type="button" class="filter-btn active">전체</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <div class="filter-label">정렬</div>
+                <div class="filter-btn-group">
+                    <button type="button" class="filter-btn active">날짜순</button>
+                    <button type="button" class="filter-btn">이름순</button>
+                    <button type="button" class="filter-btn">가격순</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <div class="filter-label">순서</div>
+                <div class="filter-btn-group">
+                    <button type="button" class="filter-btn active">오름차순</button>
+                    <button type="button" class="filter-btn">내림차순</button>
+                </div>
+            </div>
+            <div class="filter-action-row">
+                <button type="button" class="filter-action-btn apply">적용</button>
+                <button type="button" class="filter-action-btn cancel">취소</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="board-contents" class="board-contents">
+        <!-- 과제 -->
+        <div id="assignment-content" class="content assignment" style="display: flex;">
+            <!-- 초기 상태 -->
+            <div class="guide" style="display: none;">
+                <div class="guide-title">채팅방 친구들과 과제를 공유해 보세요</div>
+                <div class="guide-desc">게시물을 작성하고 채팅방에 공유할 수 있습니다.</div>
+                <button class="upload-btn">과제 작성하기</button>
+            </div>
+
+            <!-- 과제가 있는 경우 -->
+            <div class="vote-list-section" style="display: flex;">
+
+                <div class="vote-list-title ongoing">진행중인 과제</div>
+
+                <ul class="vote-list undergoing">
+                    <li id="assignment-details" class="vote-item selected">
+                        <div class="vote-icon">
+                            <img src="/public/src/assets/assignment-img1.png" alt="투표 아이콘" />
+                        </div>
+                        <div class="vote-info">
+                            <div class="vote-title">글렌 파클라스 25 cs</div>
+                            <div class="vote-meta">
+                                <span>13명 참여 · </span><span class="vote-in">참여중</span>
+                            </div>
+                            <div class="vote-date">2025년 7월 11일 오후 12:00 종료</div>
+                        </div>
+                    </li>
+                    <li id="assignment-details" class="vote-item">
+                        <div class="vote-icon">
+                            <img src="/public/src/assets/assignment-img2.png" alt="투표 아이콘" />
+                        </div>
+                        <div class="vote-info">
+                            <div class="vote-title">맥켈란 no.3</div>
+                            <div class="vote-meta">
+                                <span>2명 참여 · 진행중</span>
+                            </div>
+                            <div class="vote-date">2025년 7월 14일 오후 7:59 종료</div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="vote-list-title finished">종료된 과제</div>
+
+                <ul class="vote-list terminated">
+                    <li id="assignment-details" class="vote-item">
+                        <div class="vote-icon">
+                            <img src="/public/src/assets/assignment-img3.png" alt="투표 아이콘" />
+                        </div>
+                        <div class="vote-info">
+                            <div class="vote-title">조니워커 레드라벨</div>
+                            <div class="vote-meta">
+                                <span>71명 참여 · 미참여</span>
+                            </div>
+                            <div class="vote-date">2024년 6월 27일 오후 12:00 종료</div>
+                        </div>
+                    </li>
+                    <li id="assignment-details" class="vote-item">
+                        <div class="vote-icon">
+                            <img src="/public/src/assets/assignment-img4.png" alt="투표 아이콘" />
+                        </div>
+                        <div class="vote-info">
+                            <div class="vote-title">딤플</div>
+                            <div class="vote-meta">
+                                <span>33명 참여 · 미참여</span>
+                            </div>
+                            <div class="vote-date">2023년 12월 22일 오후 12:00 종료</div>
+                        </div>
+                    </li>
+                    <li id="assignment-details" class="vote-item">
+                        <div class="vote-icon">
+                            <img src="/public/src/assets/assignment-img5.png" alt="투표 아이콘" />
+                        </div>
+                        <div class="vote-info">
+                            <div class="vote-title">캪틴큐</div>
+                            <div class="vote-meta">
+                                <span>15234명 참여 · </span><span class="vote-miss">달성 실패</span>
+                            </div>
+                            <div class="vote-date">2021년 8월 11일 오후 8:55 종료</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <!-- 전체 -->
+        <div id="all-content" class="content all" style="display: none;">
+            <div class="guide">
+                <div class="guide-title">첫 글을 작성해 보세요</div>
+                <div class="guide-desc">게시물을 작성하고 채팅방에 공유할 수 있습니다.</div>
+                <button class="upload-btn">글 작성하기</button>
+            </div>
+        </div>
+
+        <!-- 공지 -->
+        <div id="notification-content" class="content notification" style="display: none;">
+            <div class="guide">
+                <div class="guide-title">중요한 소식을 공지로 작성해해 보세요</div>
+                <div class="guide-desc">게시물을 작성하고 채팅방에 공유할 수 있습니다.</div>
+                <button class="upload-btn">글 작성하기</button>
+            </div>
+        </div>
+
+        <!-- 투표 -->
+        <div id="vote-content" class="content vote" style="display: none;">
+            <div class="guide">
+                <div class="guide-title">채팅방 친구들과 투표를 공유해 보세요</div>
+                <div class="guide-desc">게시물을 작성하고 채팅방에 공유할 수 있습니다.</div>
+                <button class="upload-btn">투표 올리기</button>
+            </div>
+        </div>
+
+        <!-- 파일 -->
+        <div id="file-content" class="content file" style="display: none;">
+            <div class="guide">
+                <div class="guide-title">채팅방 친구들과 파일을 공유해 보세요</div>
+                <div class="guide-desc">게시물을 작성하고 채팅방에 공유할 수 있습니다.</div>
+                <button class="upload-btn">파일 올리기</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="/public/pages/board/board.js"></script>
+</body>
+
+</html>

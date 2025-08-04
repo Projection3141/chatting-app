@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>웹 메인 페이지</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="./main.css">
+    <link rel="stylesheet" href="../personal_chatroom/personal_chatroom.css">
+    <script type="module" src="./main.js" defer></script>
+</head>
+
+<body>
+<div class="container">
+  <!-- 채팅방 목록 / 친구 목록 토글 영역 -->
+  <div id="chat-list-panel" class="side-panel">
+    <iframe
+      id="chat-list-iframe"
+      class="side-iframe"
+      src="/public/pages/chat_list/chat_list.html"
+      frameborder="0"
+      style="display: flex;"
+    ></iframe>
+    <iframe
+      id="friend-list-iframe"
+      class="side-iframe"
+      src="/public/pages/friends/friends.html"
+      frameborder="0"
+      style="display: none;"
+    ></iframe>
+  </div>
+
+  <!-- 중앙 채팅창 영역 (탭 UI + 채팅 내용 영역) -->
+  <div class="center-panel">
+    <div id="chat-tabs" class="chat-tabs"></div>
+    <div id="chat-panel" class="chat-panel"></div>
+  </div>
+
+  <!-- 게시판 -->
+  <div id="drawer-panel" class="side-panel">
+    <iframe
+      id="drawer-iframe"
+      class="side-iframe"
+      src="/public/pages/board/board.html"
+      frameborder="0"
+    ></iframe>
+  </div>
+</div>
+</body>
+
+</html>

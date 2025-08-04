@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>로그인</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <script defer src="login.js"></script>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-title">
+                <i class="fas fa-user-circle"></i>
+                <span>로그인</span>
+            </div>
+            <form class="login-form">
+                <input type="text" placeholder="아이디" required>
+                <input type="password" placeholder="비밀번호" required>
+                <button type="submit" class="login-btn">로그인</button>
+            </form>
+            <button type="button" class="signup-btn" id="signup-open-btn">회원가입</button>
+        </div>
+    </div>
+
+    <!-- 로그인 실패 모달 -->
+    <div class="login-fail-modal" id="login-fail-modal" style="display: none;">
+        <div class="login-fail-modal-inner">
+            <i class="fas fa-times login-fail-modal-close" id="login-fail-close-btn"></i>
+            <div class="login-fail-title">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>로그인 실패</span>
+            </div>
+            <div class="login-fail-message">
+                아이디 또는 비밀번호가 올바르지 않습니다.
+            </div>
+            <button class="login-fail-confirm-btn" id="login-fail-confirm-btn">확인</button>
+        </div>
+    </div>
+
+    <!-- 회원가입 모달 -->
+    <div class="signup-modal" id="signup-modal" style="display: none;">
+        <div class="signup-modal-inner">
+            <i class="fas fa-times signup-modal-close" id="signup-close-btn"></i>
+            <div class="signup-title">
+                <i class="fas fa-user-plus"></i>
+                <span>회원가입</span>
+            </div>
+            <form class="signup-form">
+                <input type="text" placeholder="아이디" required>
+                <input type="password" placeholder="비밀번호" required>
+                <input type="password" placeholder="비밀번호 확인" required>
+                <input type="text" placeholder="닉네임" required>
+                <button type="submit" class="signup-submit-btn">회원가입 완료</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

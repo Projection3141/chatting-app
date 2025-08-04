@@ -1,0 +1,129 @@
+:root {
+            --primary: #2E7D32; /* 카카오톡 초록 계열 */
+            --secondary: #5865F2; /* 디스코드 블루 계열 */
+            --bg: #f8f8f8;
+            --card-bg: #fff;
+            --text: #333;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            padding: 24px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .header h2 {
+            margin: 0;
+            color: #4714ed;
+        }
+
+        .participants {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+            justify-content: center;
+        }
+
+        .participant {
+            text-align: center;
+        }
+
+        .profile {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            margin: 0 auto;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .name {
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .status {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .status.online {
+            color: var(--primary);
+        }
+
+        .status.voice {
+            color: var(--secondary);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--bg);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: background-color 0.2s;
+        }
+
+        .control-btn.end {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .control-btn.voice {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .control-btn.video {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .control-btn:hover {
+            opacity: 0.9;
+        }
+
+        .control-btn i {
+            font-size: 24px;
+        }
+
+        .footer {
+            margin-top: 16px;
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+        }
