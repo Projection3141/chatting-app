@@ -279,7 +279,6 @@ function createLinkCard(message, isMine) {
 // });
 
 // 음성/영상 통화 버튼 토글
-
 document.getElementById('voice-call-button').addEventListener('click', startVoiceCall);
 document.getElementById('cancel-voicecall-button').addEventListener('click', cancelVoiceCall);
 document.getElementById('face-call-button').addEventListener('click', startFaceCall);
@@ -311,9 +310,12 @@ function cancelFaceCall() {
 
 
 // 더보기 버튼 토글
-
 document.getElementById('more-button').addEventListener('click', openMore);
-document.getElementById('more-close-button').addEventListener('click', closeMore);
+document.body.addEventListener('click', (e) => {
+    if (e.target.matches('#more-close-button') || e.target.matches('#modal-bright-overlay')) {
+        closeMore();
+    }
+});
 
 function openMore() {
     document.getElementById('modal-bright-overlay').style.display = 'block';

@@ -267,3 +267,43 @@ body {
 .signup-submit-btn:hover {
   background: #3a2fd9;
 }
+
+.id-check-btn {
+  width: 100%;
+  padding: 10px 0;
+  background: #f4f5ff;
+  color: #4714ed;
+  border: 1.5px solid #d3d4f5;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, border 0.18s;
+  margin-bottom: 8px;
+}
+.id-check-btn:hover {
+  background: #e8eafd;
+  border-color: #4714ed;
+}
+
+/* 아이디 input의 placeholder 색상 - 조건부 스타일링 */
+.signup-form input.id-unavailable::placeholder {
+  color: #ed1447 !important; /* 빨간색(존재 시) */
+}
+.signup-form input.id-available::placeholder {
+  color: #4714ed !important; /* 파란색(사용 가능) */
+}
+
+#signup-btn:disabled,
+.id-check-btn:disabled {
+  background: #ededed;
+  color: #888;
+  border-color: #ddd;
+  cursor: not-allowed;
+}
+
+.id-check-btn.id-available {
+  background: #4714ed;
+  color: #fff;
+  border-color: #4714ed;
+}

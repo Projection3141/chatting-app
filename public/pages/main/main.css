@@ -1,16 +1,22 @@
-body,
-html {
+/* === 공통 전체 구조 === */
+
+/* 전체 페이지 크기 및 마진/패딩 초기화 */
+body, html {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
+/* 메인 flex 컨테이너: 3패널 레이아웃 구성 */
 .container {
   display: flex;
   height: 100vh;
   max-width: 100%;
 }
 
+/* === 사이드 패널(좌/우) === */
+
+/* 친구목록, 채팅방목록, 게시판 목록용 패널 */
 .side-panel {
   width: 460px;
   min-width: 56px;
@@ -23,11 +29,24 @@ html {
   flex-direction: column;
   z-index: 1;
 }
-
+/* 패널이 사라질 때 */
 .side-panel.collapsed {
   display: none;
 }
 
+/* 토글(접기/열기 등) 버튼 */
+.toggle-btn {
+  position: absolute;
+  top: 12px;
+  right: -8px;
+  z-index: 2;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* iframe을 통한 목록/게시판/친구창 표시 */
 .side-iframe {
   width: 100%;
   height: 100%;
@@ -38,6 +57,8 @@ html {
   flex: 1;
 }
 
+/* === 중앙 패널(채팅 영역) === */
+
 .center-panel {
   flex: 1 1 0%;
   display: flex;
@@ -46,9 +67,32 @@ html {
   border-left: 1px solid #232323;
 }
 
+/* 중앙 상단 헤더 */
+.center-header {
+  background: #ece8fd;
+  padding: 18px 16px;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #c6baff;
+}
+
+/* 중앙 내용(채팅, 게시판 등 스크롤가능) */
+#chat-main-content, #drawer-content, #chat-list-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  background: #fff;
+}
+
+/* 중앙 더보기 */
+.chat-main-content.modal-open {
+  overflow: hidden;
+}
+
+/* === 채팅 탭 영역 === */
+
 .chat-tabs {
   display: flex;
-  background: hsl(220, 75%, 85%);
+  background: hsl(240, 12%, 86%);
   height: 38px;
   align-items: center;
   border-bottom: 1px solid #333;
@@ -56,6 +100,7 @@ html {
   overflow-x: auto;
 }
 
+/* 탭 개별 아이템 */
 .chat-tab {
   padding: 0 22px 0 15px;
   margin-right: 2px;
@@ -63,21 +108,23 @@ html {
   display: flex;
   align-items: center;
   cursor: pointer;
-  background: #24292e;
+  background: #bbd2e9;
   border-right: 1px solid #333;
   position: relative;
   transition: background 0.12s;
-  color: #ccc;
+  color: #5b5b5b;
   font-weight: 500;
 }
 
+/* 활성화(선택됨) 탭 */
 .chat-tab.active {
-  background: #282c34;
-  color: #fff;
+  background: #8ba3d2;
+  color: #1c1c1c;
   font-weight: bold;
   z-index: 1;
 }
 
+/* 탭의 닫기(X)버튼 */
 .close-tab {
   margin-left: 10px;
   color: #999;
@@ -85,10 +132,22 @@ html {
   cursor: pointer;
 }
 
+/* 활성 탭의 X는 흰색 */
 .chat-tab.active .close-tab {
-  color: #fff;
+  color: #151515;
 }
 
+/* === 채팅 내용 영역 === */
+
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+  min-height: 0; /* flex-bug 방지, 반드시 같이 쓰는 게 좋음 */
+  overflow-y: auto;
+}
+
+/* 각 채팅 메시지 블록 */
 .chat-content-area {
   flex: 1 1 auto;
   overflow-y: auto;
@@ -103,6 +162,19 @@ html {
   font-size: 14px;
 }
 
+.chatroom-header, 
+.chatroom-footer {
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.chatroom-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* 일반, 시스템, 경고 메시지 색상 */
 .text-muted,
 .no-messages {
   color: #888;
@@ -112,128 +184,11 @@ html {
   color: red;
 }
 
-/*-----------*/
-
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.side-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  min-width: 0;
-  min-height: 0;
-  background: #fff;
-  flex: 1;
-}
-
+/* === 메인/중앙 iframe === */
 .main-iframe {
   width: 100%;
   height: 100%;
   border: none;
   background: #fff;
   flex: 1;
-}
-
-/* 패널/센터 flex는 기존과 동일 */
-.container {
-  display: flex;
-  height: 100vh;
-  max-width: 100%;
-}
-
-.center-panel {
-  flex: 1 1 0%;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  border-left: 1px solid #232323;
-}
-
-.side-panel {
-  width: 460px;
-  min-width: 56px;
-  background: #f7f7f7;
-  position: relative;
-  transition: width 0.2s;
-  overflow: hidden;
-  border-right: 1px solid #e0e0e0;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
-}
-
-.side-panel.collapsed {
-  display: none;
-}
-
-.toggle-btn {
-  position: absolute;
-  top: 12px;
-  right: -8px;
-  z-index: 2;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-
-
-.center-header {
-  background: #ece8fd;
-  padding: 18px 16px;
-  font-size: 18px;
-  font-weight: bold;
-  border-bottom: 1px solid #c6baff;
-}
-
-#chat-main-content, #drawer-content, #chat-list-content {
-  flex: 1 1 auto;
-  overflow-y: auto;
-  background: #fff;
-}
-
-.chat-tabs {
-  display: flex;
-  background: hsl(220, 75%, 85%);
-  height: 38px;
-  align-items: center;
-  border-bottom: 1px solid #333;
-  user-select: none;
-  overflow-x: auto;
-}
-
-.chat-tab {
-  padding: 0 22px 0 15px;
-  margin-right: 2px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  background: #24292e;
-  border-right: 1px solid #333;
-  position: relative;
-  transition: background 0.12s;
-}
-
-.chat-tab.active {
-  background: #282c34;
-  color: #fff;
-  font-weight: bold;
-  z-index: 1;
-}
-
-.close-tab {
-  margin-left: 10px;
-  color: #999;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.chat-tab.active .close-tab {
-  color: #fff;
 }

@@ -60,8 +60,7 @@ body.modal-open {
     position: absolute;
     top: 40px;
     /* more-button 아래 */
-    right: -30px;
-    /* 오른쪽 정렬 */
+    right: -10px;
     width: 180px;
     min-height: 120px;
     background: #fff;

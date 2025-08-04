@@ -275,19 +275,29 @@ function renderChatMessagesFull(chatData, container, friend, profileImg) {
 function attachChatroomEventHandlers(panel, friend) {
   // 더보기
   let moreButton = panel.querySelector('#more-button');
-  if (moreButton) {
-    moreButton.addEventListener('click', function() {
-      panel.querySelector('#modal-bright-overlay').style.display = 'block';
-      panel.querySelector('.more-functions').style.display = 'block';
-      document.body.classList.add('modal-open');
-    });
-  }
   let moreCloseButton = panel.querySelector('#more-close-button');
-  if (moreCloseButton) {
-    moreCloseButton.addEventListener('click', function() {
-      panel.querySelector('#modal-bright-overlay').style.display = 'none';
-      panel.querySelector('.more-functions').style.display = 'none';
-      document.body.classList.remove('modal-open');
+  let brightOverlay = panel.querySelector('#modal-bright-overlay');
+  let moreFunctions = panel.querySelector('.more-functions');
+
+  if (moreButton && moreCloseButton && brightOverlay && moreFunctions) {
+    // 중복 바인딩 방지 위해 removeEventListener 필요하거나, 'once' 옵션 고려 가능
+
+    moreButton.addEventListener('click', () => {
+      brightOverlay.style.display = 'block';
+      moreFunctions.style.display = 'block';
+      panel.classList.add('modal-open');
+    });
+
+    moreCloseButton.addEventListener('click', () => {
+      brightOverlay.style.display = 'none';
+      moreFunctions.style.display = 'none';
+      panel.classList.remove('modal-open');
+    });
+
+    brightOverlay.addEventListener('click', () => {
+      brightOverlay.style.display = 'none';
+      moreFunctions.style.display = 'none';
+      panel.classList.remove('modal-open');
     });
   }
 
