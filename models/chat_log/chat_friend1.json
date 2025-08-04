@@ -34,8 +34,7 @@
     },
     {
         "sender": "friend",
-        "text": "감정표현, 답장 hover 예시",
-        "replyAndExpression": true
+        "text": "감정표현, 답장 hover 예시"
     },
     {
         "sender": "me",

@@ -151,124 +151,171 @@ async function renderPersonalChatroom(friend, jsonPath) {
 // --- 동일 personal_chatroom 메시지 렌더링 로직 (구현 핵심) ---
 function renderChatMessagesFull(chatData, container, friend, profileImg) {
   container.innerHTML = '';
+
   chatData.forEach(msg => {
-    // 시간 표시
-    if (msg.type === 'time') {
-      const timeDiv = document.createElement('div');
-      timeDiv.className = 'time';
-      timeDiv.textContent = msg.text;
-      container.appendChild(timeDiv);
-      return;
-    }
-    // friend 메시지
-    if (msg.sender === 'friend') {
-      if (msg.profile || msg.name) {
-        const startDiv = document.createElement('div');
-        startDiv.className = 'friend-message-start';
-        startDiv.innerHTML = `
-          <div class="friend-profile">
-            <img src="${msg.profile || profileImg}" class="friend-profile-img">
-            <div>
-              <div class="name">${msg.name || friend}</div>
-              <div class="friend-message">${msg.text}</div>
-            </div>
-          </div>
-        `;
-        container.appendChild(startDiv);
-      } else {
-        const lastDiv = document.createElement('div');
-        lastDiv.className = 'friend-message-last';
-        lastDiv.innerHTML = `<div class="friend-message">${msg.text}</div>`;
-        container.appendChild(lastDiv);
-      }
-      // 감정표현
-      if (msg.reactions) {
-        const reactionsDiv = document.createElement('div');
-        reactionsDiv.className = 'msg-reactions';
-        msg.reactions.forEach(r => {
-          reactionsDiv.innerHTML += `<div class="msg-reaction"><i class="${r.icon}"></i>${r.count}</div>`;
-        });
-        container.appendChild(reactionsDiv);
-      }
-      // 감정표현, 답장 
-      if (msg.replyAndExpression) {
-        const replyDiv = document.createElement('div');
-        replyDiv.className = 'friend-message-last expression';
-        replyDiv.innerHTML = `
-          <div class="friend-message">${msg.text}</div>
-          <div class="reply-and-expression">
-            <i class="fas fa-reply" id="reply"></i>
-            &nbsp;<span class="middle-bar">|</span>&nbsp;
-            <i class="far fa-heart" id="expression"></i>
-          </div>
-        `;
-        container.appendChild(replyDiv);
-      }
-      // 링크
-      if (msg.link) {
-        const linkDiv = document.createElement('div');
-        linkDiv.className = 'friend-message-start';
-        linkDiv.innerHTML = `
-          <div class="friend-profile">
-            <img src="${msg.profile || profileImg}" class="friend-profile-img">
-            <div>
-              <div class="name">${msg.name || friend}</div>
-              <a class="friend-message link-url" href="${msg.link}" target="_blank">${msg.link}</a>
-            </div>
-          </div>
-        `;
-        container.appendChild(linkDiv);
-        // 링크 카드
-        if (msg.linkCard) {
-          const cardDiv = document.createElement('div');
-          cardDiv.className = 'link-card-container friend-message-last';
-          cardDiv.innerHTML = `
-            <div class="link-card">
-              <div class="link-card-image"><img src="${msg.linkCard.thumbnail}" alt="링크 썸네일"></div>
-              <div class="link-card-content">
-                <div class="link-card-title">${msg.linkCard.title}</div>
-                <div class="link-card-description">${msg.linkCard.description}</div>
-                <div class="link-card-url">${msg.link}</div>
-              </div>
-            </div>`;
-          container.appendChild(cardDiv);
+        // 시간 메시지 처리
+        if (msg.type === 'time') {
+            const timeDiv = document.createElement('div');
+            timeDiv.className = 'time';
+            timeDiv.textContent = msg.text || '';
+            container.appendChild(timeDiv);
+            return;
         }
-      }
-    }
-    // 내 메시지
-    if (msg.sender === 'me') {
-      if (msg.reply) {
-        const replyDiv = document.createElement('div');
-        replyDiv.className = 'my-message-start';
-        replyDiv.innerHTML = `
-          <div class="my-message reply">
-            <p class="reply-to-who">${msg.reply.to}</p>
-            <p class="reply-to-what">${msg.reply.toWhat}</p>
-            <p class="reply-message">${msg.text}</p>
-          </div>`;
-        container.appendChild(replyDiv);
-      } else if (msg.image) {
-        const imgDiv = document.createElement('div');
-        imgDiv.className = 'my-message-start';
-        imgDiv.innerHTML = `
-          <div class="my-message image">
-            <img src="${msg.image}" alt="보낸 이미지" class="chat-image-msg">
-          </div>`;
-        container.appendChild(imgDiv);
-      } else {
-        const startDiv = document.createElement('div');
-        startDiv.className = 'my-message-start';
-        startDiv.innerHTML = `<div class="my-message">${msg.text}</div>`;
-        container.appendChild(startDiv);
-      }
-      if (msg.last) {
-        const lastDiv = document.createElement('div');
-        lastDiv.className = 'my-message-last';
-        lastDiv.innerHTML = `<div class="my-message">${msg.last}</div>`;
-        container.appendChild(lastDiv);
-      }
-    }
-  });
+
+        // 상대방 메시지 - 링크 메시지 우선 처리
+        if (msg.sender === 'friend') {
+            if (msg.link) {
+                const linkDiv = document.createElement('div');
+                linkDiv.className = 'friend-message-start';
+                linkDiv.innerHTML = 
+                ` <div class="friend-profile">
+                    <img src="${msg.profile || '/public/src/assets/friend-profile.png'}" class="friend-profile-img">
+                    <div>
+                      <div class="name">${msg.name || '친구'}</div>
+                      <a class="friend-message link-url" href="${msg.link}" target="_blank" rel="noopener noreferrer">${msg.link}</a>
+                    </div>
+                  </div>
+                `;
+                container.appendChild(linkDiv);
+
+                if (msg.linkCard) {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'link-card-container friend-message-last';
+                    cardDiv.innerHTML = 
+                    ` <div class="link-card">
+                        <div class="link-card-image">
+                          <img src="${msg.linkCard.thumbnail}" alt="링크 썸네일">
+                        </div>
+                        <div class="link-card-content">
+                          <div class="link-card-title">${msg.linkCard.title}</div>
+                          <div class="link-card-description">${msg.linkCard.description}</div>
+                          <div class="link-card-url">${msg.link}</div>
+                        </div>
+                      </div>
+                    `;
+                    container.appendChild(cardDiv);
+                }
+                return; // 링크 메시지 처리 후 종료
+            }
+
+            // 링크 메시지가 아니라면 일반 메시지 처리
+            if (msg.profile && msg.text) {
+                const startDiv = document.createElement('div');
+                startDiv.className = 'friend-message-start';
+                startDiv.innerHTML = 
+                ` <div class="friend-profile">
+                    <img src="${msg.profile}" class="friend-profile-img">
+                    <div>
+                      <div class="name">${msg.name || '친구'}</div>
+                      <div class="friend-message">${msg.text}</div>
+                    </div>
+                  </div>
+                `;
+                container.appendChild(startDiv);
+            } else if (msg.text) {
+                const lastDiv = document.createElement('div');
+                lastDiv.className = 'friend-message-last';
+                lastDiv.innerHTML = `<div class="friend-message">${msg.text}</div>`;
+                container.appendChild(lastDiv);
+            }
+
+            // 감정표현 및 답장
+            if (msg.reactions) {
+                const reactionsDiv = document.createElement('div');
+                reactionsDiv.className = 'msg-reactions';
+                msg.reactions.forEach(r => {
+                    reactionsDiv.innerHTML += `<div class="msg-reaction"><i class="${r.icon}"></i>${r.count}</div>`;
+                });
+                container.appendChild(reactionsDiv);
+            }
+            if (msg.replyAndExpression) {
+                const replyDiv = document.createElement('div');
+                replyDiv.className = 'friend-message-last expression';
+                replyDiv.innerHTML = 
+                ` <div class="friend-message">${msg.text}</div>
+                  <div class="reply-and-expression">
+                    <i class="fas fa-reply" id="reply"></i>
+                    &nbsp;<span class="middle-bar">|</span>&nbsp;
+                    <i class="far fa-heart" id="expression"></i>
+                  </div>
+                `;
+                container.appendChild(replyDiv);
+            }
+
+            return; // 상대방 메시지 처리 종료
+        }
+
+        // 내가 보낸 메시지 - 링크 메시지 우선 처리
+        if (msg.sender === 'me') {
+            if (msg.link) {
+                const linkDiv = document.createElement('div');
+                linkDiv.className = 'my-message-start';
+                linkDiv.innerHTML = `
+        <div class="my-message link-message">
+          <a href="${msg.link}" target="_blank" rel="noopener noreferrer">${msg.link}</a>
+        </div>
+      `;
+                container.appendChild(linkDiv);
+
+                if (msg.linkCard) {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'link-card-container my-message-last';
+                    cardDiv.innerHTML = `
+          <div class="link-card">
+            <div class="link-card-image">
+              <img src="${msg.linkCard.thumbnail}" alt="링크 썸네일">
+            </div>
+            <div class="link-card-content">
+              <div class="link-card-title">${msg.linkCard.title}</div>
+              <div class="link-card-description">${msg.linkCard.description}</div>
+              <div class="link-card-url">${msg.link}</div>
+            </div>
+          </div>
+        `;
+                    container.appendChild(cardDiv);
+                }
+                return; // 내 링크 메시지 처리 후 종료
+            }
+
+            // 링크 메시지 아니면 일반 내 메시지 처리
+            if (msg.reply) {
+                const replyDiv = document.createElement('div');
+                replyDiv.className = 'my-message-start';
+                replyDiv.innerHTML = `
+        <div class="my-message reply">
+          <p class="reply-to-who">${msg.reply.to}</p>
+          <p class="reply-to-what">${msg.reply.toWhat}</p>
+          <p class="reply-message">${msg.text}</p>
+        </div>
+      `;
+                container.appendChild(replyDiv);
+            } else if (msg.image) {
+                const imgDiv = document.createElement('div');
+                imgDiv.className = 'my-message-start';
+                imgDiv.innerHTML = `
+        <div class="my-message image">
+          <img src="${msg.image}" alt="보낸 이미지" class="chat-image-msg">
+        </div>
+      `;
+                container.appendChild(imgDiv);
+            } else if (msg.text) {
+                const startDiv = document.createElement('div');
+                startDiv.className = 'my-message-start';
+                startDiv.innerHTML = `<div class="my-message">${msg.text}</div>`;
+                container.appendChild(startDiv);
+            }
+
+            if (msg.last) {
+                const lastDiv = document.createElement('div');
+                lastDiv.className = 'my-message-last';
+                lastDiv.innerHTML = `<div class="my-message">${msg.last}</div>`;
+                container.appendChild(lastDiv);
+            }
+
+            return; // 내 메시지 처리 종료
+        }
+
+    });
 }
 
 // personal_chatroom에서 쓰던 각종 이벤트 부착 함수
