@@ -13,7 +13,7 @@
     <div class="container">
         <!-- 채팅방 목록 / 친구 목록 토글 영역 -->
          <div id="chat-list-panel" class="side-panel">
-                <iframe
+                <iframe
                     id="chat-list-iframe"
                     class="side-iframe"      
                     src="/public/pages/chat_list/chat_list.html"
@@ -29,9 +29,16 @@
                  ></iframe>
          </div>
         <!-- 중앙 채팅창 영역 (탭 UI + 채팅 내용 영역) -->
-         <div class="center-panel">
+        <div class="center-panel">
             <div id="chat-tabs" class="chat-tabs"></div>
-            <div id="chat-panel" class="chat-panel"></div>
+            <div id="chat-panel" class="chat-panel">
+                <!-- 기본 배경 -->
+                <div id="chat-empty-message" class="chat-empty-message">
+                    채팅을 열어 대화를 시작해보세요
+                </div>
+                <!-- 채팅 내용이 채워질 영역 -->
+                <div id="chat-content"></div>
+            </div>
         </div>
 
         <!-- 게시판 -->

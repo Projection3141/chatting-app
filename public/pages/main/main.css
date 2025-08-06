@@ -28,6 +28,7 @@ body, html {
   display: flex;
   flex-direction: column;
   z-index: 1;
+  padding-top: 0;
 }
 /* 패널이 사라질 때 */
 .side-panel.collapsed {
@@ -88,54 +89,64 @@ body, html {
   overflow: hidden;
 }
 
-/* === 채팅 탭 영역 === */
-
+/* === 채팅 탭 바 === */
 .chat-tabs {
-  display: flex;
-  background: hsl(240, 12%, 86%);
-  height: 38px;
-  align-items: center;
-  border-bottom: 1px solid #333;
-  user-select: none;
-  overflow-x: auto;
+  display: flex;                    /** 가로 배치 유지 */
+  flex-wrap: nowrap;                /** 줄바꿈 방지 */
+  overflow-x: auto;                 /** 가로 스크롤 허용 */
+  overflow-y: hidden;               /** 세로 스크롤 차단 */
+  white-space: nowrap;              /** 인라인 요소 줄바꿈 방지 */
+  height: 38px;                     /** 세로 한 줄 고정 */
+  background: linear-gradient(90deg,#e4e7fd 0%,#ebeafc 100%);
+  border-bottom: 1.5px solid #a2a1d6;
+  align-items: center;              /** 탭 수직 가운데 */
 }
 
-/* 탭 개별 아이템 */
+/* === 개별 탭 === */
 .chat-tab {
-  padding: 0 22px 0 15px;
-  margin-right: 2px;
+  flex: 0 0 auto;                   /** 고정폭·수축 금지 → 가로 추가만 */
+  /* 필요 시 min-width 조정 */
+  display: inline-flex;             /** 인라인-플렉스로 white-space와 호환 */
+  border-radius: 4px 4px 0 0;       /** 윗부분 굴곡 */
+  padding: 0 15px 0 15px;
   height: 36px;
-  display: flex;
+  background: #f4f7fe;
+  border-right: 1px solid #b0b5d6;
   align-items: center;
-  cursor: pointer;
-  background: #bbd2e9;
-  border-right: 1px solid #333;
-  position: relative;
-  transition: background 0.12s;
-  color: #5b5b5b;
+  color: #495b80; 
+  font-size: 16px;
   font-weight: 500;
+  transition: background .12s,color .12s;
 }
 
-/* 활성화(선택됨) 탭 */
+/* === 활성 탭 === */
 .chat-tab.active {
-  background: #8ba3d2;
-  color: #1c1c1c;
-  font-weight: bold;
-  z-index: 1;
+  background: linear-gradient(90deg,#b9ccfb 0%,#ab9ffb 100%);
+  color: #25396e;
+  font-weight: 700;
+  border: 1.5px solid #8fa3e8;
+  border-bottom: none;
+  box-shadow: 0 4px 10px -4px rgba(110,120,200,.09);
 }
 
-/* 탭의 닫기(X)버튼 */
+/* === 닫기(X) 버튼 === */
 .close-tab {
   margin-left: 10px;
-  color: #999;
+  color: #a3a3b5;
   font-size: 15px;
   cursor: pointer;
+  background: none; border: none; padding: 0; /** 원형·패딩 제거 */
 }
 
-/* 활성 탭의 X는 흰색 */
-.chat-tab.active .close-tab {
-  color: #151515;
+.close-tab:hover {
+  color: #7744dd; /** 테마 보라 계열로만 */
 }
+
+.chat-tab.active .close-tab {
+  color: #25396e; /** 진한 네이비 */
+}
+
+
 
 /* === 채팅 내용 영역 === */
 
@@ -145,6 +156,26 @@ body, html {
   flex: 1 1 0%;
   min-height: 0; /* flex-bug 방지, 반드시 같이 쓰는 게 좋음 */
   overflow-y: auto;
+  position: relative;
+  height: 100%;
+  background: #f0f0f5; /* 원하시는 배경 색상 */
+}
+
+.chat-empty-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem; /* 적당히 큰 폰트 */
+  color: #999;
+  user-select: none;
+  pointer-events: none;
+  text-align: center;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  line-height: 1.4;
 }
 
 /* 각 채팅 메시지 블록 */
